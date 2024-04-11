@@ -193,7 +193,7 @@ namespace Chess.Game
 		}
 		// Gathers diagnostic information from an AI system, formats it with appropriate color codes, 
 		// and updates a UI element with the resulting text. The information displayed includes the 
-		//AI version, depth searched, evaluation, and the move performed.
+		// AI version, depth searched, evaluation, and the move performed.
 
 		public void ExportGame()
 		{

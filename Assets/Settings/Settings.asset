@@ -23,11 +23,11 @@ MonoBehaviour:
   useBook: 1
   book: {fileID: 4900000, guid: 7473c7aa9594747efb1706cc9c268ef3, type: 3}
   maxBookPly: 10
-  promotionsToSearch: 2
+  promotionsToSearch: 0
   diagnostics:
-    lastCompletedDepth: 2
-    moveVal: Rd8#
-    move: d2-d8
-    eval: 99999
+    lastCompletedDepth: 6
+    moveVal: Ne2
+    move: f4-e2
+    eval: -5
     isBook: 0
-    numPositionsEvaluated: 72
+    numPositionsEvaluated: 741294

@@ -1293,7 +1293,6 @@ GameObject:
   m_Component:
   - component: {fileID: 755082378}
   - component: {fileID: 755082377}
-  - component: {fileID: 755082376}
   - component: {fileID: 755082375}
   m_Layer: 0
   m_Name: Diagnostics
@@ -1322,14 +1321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Version 1.0
-
-    Depth Searched: 2
-
-    Eval: mate in 1 ply
-
-    Move:
-    Rxh3#'
+  m_text: "\nDepth: 2\nEval: \nMove: Rxh3#"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1401,14 +1393,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 755082377}
   m_maskType: 0
---- !u!222 &755082376
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755082374}
-  m_CullTransparentMesh: 0
 --- !u!23 &755082377
 MeshRenderer:
   m_ObjectHideFlags: 0
