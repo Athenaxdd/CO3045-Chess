@@ -41,6 +41,7 @@ namespace Chess.Game
 		public Board board { get; private set; }
 		Board searchBoard; // Duplicate version of board used for ai search
 
+		public SimpleHttpServer server;
 		void Start()
 		{
 			//Application.targetFrameRate = 60;
@@ -119,6 +120,28 @@ namespace Chess.Game
 
 		public void NewPlayerVersusPlayer()
 		{
+			// boardUI.SetPerspective(true);
+			// NewGame(PlayerType.Human, PlayerType.Human);
+
+			if (server == null)
+			{
+				SimpleHttpServer.Main();
+			}
+			WaitForPlayer();
+		}
+
+		private void WaitForPlayer()
+		{
+			while (true)
+			{
+				// Check if the second player has joined
+				if (server.IsPlayerConnected("PlayerTwo"))
+				{
+					break;
+				}
+			}
+
+			// The second player has joined, you can start the game now
 			boardUI.SetPerspective(true);
 			NewGame(PlayerType.Human, PlayerType.Human);
 		}
@@ -156,22 +179,22 @@ namespace Chess.Game
 
 		}
 		// Prepares for a new game by clearing any previous moves, loading a custom or default position 
-		//into the board objects, updating the UI, creating player objects, setting the game result to "Playing," 
-		//printing the game result, and notifying the player to make their move
+		// into the board objects, updating the UI, creating player objects, setting the game result to "Playing," 
+		// printing the game result, and notifying the player to make their move
 
 		void LogAIDiagnostics()
 		{
 			string text = "";
 			var d = aiSettings.diagnostics;
 			//text += "AI Diagnostics";
-			text += $"<color=#{ColorUtility.ToHtmlStringRGB(colors[3])}>Test\n";
-			text += $"<color=#{ColorUtility.ToHtmlStringRGB(colors[0])}>Current Depth: {d.lastCompletedDepth}";
+			text += $"<color=#{ColorUtility.ToHtmlStringRGB(colors[0])}>Test\n";
+			text += $"<color=#{ColorUtility.ToHtmlStringRGB(colors[3])}>Current Depth: {d.lastCompletedDepth + 1}";
 			//text += $"\nPositions evaluated: {d.numPositionsEvaluated}";
 
 			string evalString = "";
 			if (d.isBook)
 			{
-				evalString = "Book";
+				evalString = "Theory";
 			}
 			else
 			{

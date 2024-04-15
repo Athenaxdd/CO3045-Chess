@@ -99,14 +99,15 @@
 						searchDiagnostics.move = bestMove.Name;
 						searchDiagnostics.eval = bestEval;
 						searchDiagnostics.moveVal = Chess.PGNCreator.NotationFromMove(FenUtility.CurrentFen(board), bestMove);
-						Debug.Log("Depth " + searchDepth + " complete. Best move: " + bestMove.Name + " Eval: " + bestEval);
+						Debug.Log("Depth " + searchDepth + " complete. Best move: " + searchDiagnostics.moveVal + " Eval: " + bestEval / 100.0);
 						// Exit search if found a checkmate
-						// if (IsMateScore(bestEval) && !settings.endlessSearchMode)
-						// {
-						// 	break;
-						// }
-						if (IsMateScore(bestEval)) break;
+						if (IsMateScore(bestEval) && !settings.endlessSearchMode)
+						{
+							break;
+						}
+						// if (IsMateScore(bestEval)) break;
 					}
+					Debug.Log("Finish depth " + searchDepth + "with the time of " + searchStopwatch.ElapsedMilliseconds + "ms");
 				}
 			}
 			else

@@ -7,9 +7,8 @@ namespace Chess.Game
 
 	public class AIPlayer : Player
 	{
-		//Kế thừa từ class Player
 
-		const int bookMoveDelayMillis = 1000;
+		const int bookMoveDelayMillis = 500;
 
 		Search search;
 		AISettings settings;
@@ -28,8 +27,8 @@ namespace Chess.Game
 			settings.useFixedDepthSearch = false;
 			// settings.depth = 20;
 			// settings.useFixedDepthSearch = true;
-			settings.useIterativeDeepening = true;
-			settings.searchTimeMillis = 1000 * 10;
+			// settings.useIterativeDeepening = true;
+			settings.searchTimeMillis = 1000 * 2;
 			search = new Search(board, settings);
 			search.onSearchComplete += OnSearchComplete;
 			search.searchDiagnostics = new Search.SearchDiagnostics();
@@ -42,9 +41,7 @@ namespace Chess.Game
 				moveFound = false;
 				ChoseMove(move);
 			}
-
 			settings.diagnostics = search.searchDiagnostics;
-
 		}
 
 		public override void NotifyTurnToMove()
@@ -90,7 +87,6 @@ namespace Chess.Game
 			search.StartSearch();
 			moveFound = true;
 		}
-		//Gọi đến chức năng tìm kiếm nước đi ở Search
 		void StartThreadedSearch()
 		{
 			//Thread thread = new Thread (new ThreadStart (search.StartSearch));
@@ -114,13 +110,11 @@ namespace Chess.Game
 				search.EndSearch();
 			}
 		}
-		//Cancel tìm kiếm Thread
 		void PlayBookMove(Move bookMove)
 		{
 			this.move = bookMove;
 			moveFound = true;
 		}
-		//Áp dụng bookmove thu được vào move tiếp theo
 		void OnSearchComplete(Move move)
 		{
 			// Cancel search timer in case search finished before timer ran out (can happen when a mate is found)
